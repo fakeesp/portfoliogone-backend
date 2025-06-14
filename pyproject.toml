@@ -1,0 +1,97 @@
+[project]
+name = "portfoliogone"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "alembic~=1.13.3",
+    "asyncpg~=0.30.0",
+    "fastapi~=0.115.4",
+    "msgspec~=0.18.6",
+    "pydantic-settings~=2.6.0",
+    "python-multipart>=0.0.17",
+    "redis~=5.2.0",
+    "sqlalchemy~=2.0.36",
+    "stollen>=0.5.4",
+    "uvicorn[standard]~=0.32.0",
+    "websockets~=13.1",
+    "taskiq>=0.11.17",
+    "taskiq-redis>=1.0.8",
+    "taskiq-nats>=0.5.1",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "mypy~=1.12.0",
+    "black~=24.10.0",
+    "ruff~=0.7.1",
+]
+
+[tool.black]
+line-length = 99
+exclude = "\\.?venv|\\.?tests"
+
+[tool.ruff]
+target-version = "py38"
+line-length = 99
+lint.select = [
+    "C",
+    "DTZ",
+    "E",
+    "F",
+    "I",
+    "ICN",
+    "ISC",
+    "N",
+    "PLC",
+    "PLE",
+    "Q",
+    "T",
+    "W",
+    "YTT",
+]
+lint.ignore = ["E402"]
+exclude = [
+    ".venv",
+    ".idea",
+    ".tests",
+]
+
+[tool.mypy]
+plugins = [
+    "sqlalchemy.ext.mypy.plugin",
+    "pydantic.mypy"
+]
+exclude = [
+    "venv",
+    ".venv",
+    ".idea",
+    ".tests",
+    "migrations",
+]
+warn_unused_configs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_unused_ignores = false
+warn_return_any = true
+no_implicit_reexport = true
+strict_equality = true
+extra_checks = true
+
+[[tool.mypy.overrides]]
+module = [
+    "redis.*",
+    "taskiq_nats.*",
+]
+ignore_missing_imports = true
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["app.services.database.dragonfly.*"]
+disable_error_code = ["misc"]
