@@ -19,6 +19,8 @@ dependencies = [
     "taskiq>=0.11.17",
     "taskiq-redis>=1.0.8",
     "taskiq-nats>=0.5.1",
+    "eth-account>=0.13.7",
+    "pyjwt>=2.10.1",
 ]
 
 [tool.uv]

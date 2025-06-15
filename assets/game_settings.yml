@@ -3,5 +3,6 @@ game_settings:
     bids: 300 # Duration in seconds for the bidding stage
     signing: 30 # Duration in seconds for the tx signing stage
     reveal: 270 # Duration in seconds for the reveal results stage
+    results: 30 # Duration in seconds for the results stage
   
   fee: 0.05 # 5% fee on the total amount of the bids

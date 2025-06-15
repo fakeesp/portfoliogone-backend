@@ -1,4 +1,5 @@
 from typing import Literal
+
 from app.enums.ws_update_type import WSUpdateType
 from app.models.websockets.base import WebSocketUpdate
 
