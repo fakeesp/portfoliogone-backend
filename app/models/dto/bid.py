@@ -1,5 +1,6 @@
 from datetime import datetime
 from decimal import Decimal
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -12,7 +13,7 @@ class BidDto(BaseModel):
     game_id: int = Field(description="Unique identifier of the game associated with the bid")
     bid_type: BidType = Field(description="Type of the bid (LONG, SHORT, ZERO)")
     amount: Decimal = Field(description="Amount of USDC placed in the bid")
-    has_transaction: bool = Field(
+    signed_transaction: Optional[str] = Field(
         description="Indicates whether the bid has an associated transaction"
     )
     created_at: datetime

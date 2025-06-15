@@ -7,6 +7,7 @@ from redis.asyncio import Redis
 from redis.asyncio.lock import Lock
 from redis.typing import ExpiryT
 
+from app.services.database.dragonfly.keys import LockGameBidsKey
 from app.utils import mjson
 from app.utils.key_builder import StorageKey
 from app.utils.mjson import validate_list, validate_raw
@@ -51,3 +52,6 @@ class DragonflyRepository:
 
     def lock(self, key: StorageKey) -> Lock:
         return self.client.lock(key.pack())
+
+    def lock_bids_by_game(self, game_id: int) -> Lock:
+        return self.lock(LockGameBidsKey(game_id=game_id))

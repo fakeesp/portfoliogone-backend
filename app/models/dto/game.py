@@ -28,6 +28,10 @@ class GameInfo(BaseModel):
         description="Starting ETH price in USDC at the beginning of the game"
     )
 
+    current_eth_price_usdc: Decimal = Field(
+        description="Current ETH price in USDC at the time of the game"
+    )
+
     current_phase_start_time: datetime = Field(description="Time when the current phase started")
     stats: GameStats = Field(description="Game statistics including total bid amounts and counts")
 

@@ -1,3 +1,4 @@
+from typing import Optional
 
 from app.models.sql.bid import Bid
 
@@ -22,3 +23,12 @@ class BidsRepository(BaseRepository):
 
     async def delete_by_id(self, bid_id: int) -> bool:
         return await self._delete(Bid, Bid.id == bid_id)
+
+    async def get_by_signed_transaction(
+        self,
+        signed_transaction: str,
+    ) -> Optional[Bid]:
+        return await self._get(
+            Bid,
+            Bid.signed_transaction == signed_transaction,
+        )

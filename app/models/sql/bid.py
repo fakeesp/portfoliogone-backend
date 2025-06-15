@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -35,9 +35,8 @@ class Bid(Base, TimestampMixin):
     )
 
     amount: Mapped[Decimal] = mapped_column(nullable=False)
-    has_transaction: Mapped[bool] = mapped_column(
-        nullable=False,
-        default=False,
+    signed_transaction: Mapped[Optional[str]] = mapped_column(
+        nullable=True,
     )
 
     game: Mapped[Game] = relationship(back_populates="bids")
@@ -61,6 +60,6 @@ class Bid(Base, TimestampMixin):
             game_id=self.game_id,
             bid_type=self.bid_type,
             amount=self.amount,
-            has_transaction=self.has_transaction,
+            signed_transaction=self.signed_transaction,
             created_at=self.created_at,
         )

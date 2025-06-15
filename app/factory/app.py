@@ -5,6 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from stollen.requests import RequestSerializer
 from stollen.session.aiohttp import AiohttpSession
 
+from app.services.database.clearnet import ClearnetClient
+
 from ..lifespan import lifespan
 from ..models.config import AppConfig
 from ..models.config.assets.main import Assets
@@ -70,6 +72,7 @@ def create_app(config: AppConfig) -> FastAPI:
     app.state.app_config = config
     app.state.session_pool = create_session_pool(config.postgres.build_dsn())
     app.state.dragonfly = create_dragonfly(config.dragonfly.build_dsn())
+    app.state.clearnet = ClearnetClient("wss://clearnode.yellow.com/ws")
 
     # append_additional_schemas(app)
 
