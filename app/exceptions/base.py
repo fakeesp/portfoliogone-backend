@@ -14,7 +14,3 @@ class ControllerError(Exception):
 
     def __str__(self) -> str:
         return self.message
-
-
-class NotFoundError(ControllerError):
-    pass

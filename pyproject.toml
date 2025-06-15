@@ -21,6 +21,7 @@ dependencies = [
     "taskiq-nats>=0.5.1",
     "eth-account>=0.13.7",
     "pyjwt>=2.10.1",
+    "binance-asyncio>=0.2.0",
 ]
 
 [tool.uv]

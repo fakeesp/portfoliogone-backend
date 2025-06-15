@@ -4,7 +4,7 @@ from fastapi import Request, Response, status
 from starlette.responses import JSONResponse
 
 from app.exceptions.access import AccessError
-from app.exceptions.base import NotFoundError
+from app.exceptions.not_found import NotFoundError
 from app.models.http.responses.exceptions.access_error import AccessErrorResponse
 from app.models.http.responses.exceptions.base import BaseExceptionResponse
 from app.models.http.responses.exceptions.not_found import NotFoundResponse

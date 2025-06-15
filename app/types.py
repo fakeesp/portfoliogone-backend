@@ -1,6 +1,5 @@
 from decimal import Decimal
 from typing import Annotated, Any
-from uuid import UUID
 
 # Data types
 Int16 = Annotated[int, 16]
@@ -12,4 +11,3 @@ ListInt = list[Int64]
 ListStr = list[str]
 TextMap = dict[str, str]
 ListDictStrAny = list[DictStrAny]
-DictUUIDStrDecimal = dict[UUID, DictStrDecimal]

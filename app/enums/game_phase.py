@@ -3,8 +3,7 @@ from enum import StrEnum, auto
 
 class GamePhase(StrEnum):
     BIDDING = auto()
-    SIGNING = auto()
-    REVEALING = auto()
+    WAITING = auto()
     FINISHED = auto()
     COMPLETED = (
         auto()
